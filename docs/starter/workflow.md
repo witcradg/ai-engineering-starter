@@ -2,7 +2,7 @@
 
 ## Project Initialization (Required for New Repos)
 
-When working in a newly cloned repository, complete this setup before beginning any tasks.
+When working in a new repository created from this starter, complete this setup before beginning any tasks.
 
 1. Remove the `meta/` directory
 
@@ -94,6 +94,23 @@ Include:
 - existing pattern to follow:
 - legacy pattern to avoid (if any):
 
+### Execution Readiness
+
+Before finalizing the plan, confirm that the next steps can be executed from the current repo state.
+
+Check:
+
+- does the required scaffold exist?
+- are install and run commands derivable from the repo?
+- are required dependencies/configs present?
+- is the environment runnable if the next step depends on it?
+
+If prerequisites are missing:
+
+- do not proceed with abstract planning
+- explicitly identify the missing prerequisites
+- sequence them before implementation work
+
 ### Verification Plan
 
 - change classification (V1 / V2 / V3)
@@ -126,6 +143,8 @@ If new repo-specific knowledge is discovered:
 ## Step 5 — Verify
 
 Verify the change according to the plan.
+Verification must be explicitly stated before completing a task.
+Reference relevant checks from docs/starter/verification.md.
 
 Examples:
 

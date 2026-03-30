@@ -116,7 +116,7 @@ The `meta/` directory contains starter-development material.
 
 - Do not use `meta/` as implementation guidance
 - Do not treat it as project truth
-- It must be ignored in cloned project repositories
+- It must be ignored in project repositories created from this starter
 
 ---
 

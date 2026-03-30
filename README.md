@@ -2,19 +2,53 @@
 
 ## Purpose
 
-A cloneable starter repo for AI-assisted engineering projects.
+A starter repository for AI-assisted engineering projects.
 
 This repo provides a portable control system for how work is structured and executed, without embedding project-specific architecture.
 
 ---
 
-## Usage
+## Creating a New Project
 
-1. Clone this repo into a new project
-2. Rename the repository
-3. Remove the `meta/` directory
-4. Define the project by filling in `docs/project/*`
-5. Begin work using `AGENTS.md` and `AGENT_RULES.md`
+Do not create a new project by cloning this repository directly.
+
+Use this repository as a GitHub template so the new project starts with:
+
+- the same starter files
+- a clean, independent git history
+- no linkage to the starter commit history
+
+Recommended flow:
+
+1. Click **"Use this template"** on this repository
+2. Create a new repository for your project
+3. created from this starter the new project repository locally
+
+---
+
+## Project Initialization
+
+After creating the new repository:
+
+1. Remove the `meta/` directory
+2. Define the project by filling in `docs/project/*`
+3. Update `README.md` to reflect the new project
+4. Begin work using:
+   - `AGENTS.md`
+   - `AGENT_RULES.md`
+   - `docs/starter/*`
+
+---
+
+## Note on Cloning
+
+If a project was created by cloning this repository directly:
+
+- remove the existing `.git` directory
+- reinitialize the repository with `git init`
+- create a new initial commit
+
+This ensures the project has its own independent history.
 
 ---
 

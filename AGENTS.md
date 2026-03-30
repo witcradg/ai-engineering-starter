@@ -56,7 +56,7 @@ Use these to understand:
 
 ## 2. Project Context
 
-These documents define the truth for the specific repo cloned from this starter:
+These documents define the truth for the specific repo created from this starter:
 
 - `docs/project/PROJECT_OVERVIEW.md`
 - `docs/project/STACK.md`
@@ -78,7 +78,7 @@ Instead, identify the missing context explicitly and update the appropriate proj
 
 The `meta/` directory contains starter-development material only.
 
-It is not part of the active control system for cloned project repos and must not be treated as implementation guidance or project truth.
+It is not part of the active control system for projects created from this starter and must not be treated as implementation guidance or project truth.
 
 If working inside the starter repo itself, `meta/` may be used for starter design and portability work, but not as authority for product implementation decisions.
 
@@ -139,6 +139,8 @@ Prefer the smallest set of governing documents over a long inventory of consulte
 
 # Verification Planning Before Implementation
 
+# Verification Planning Before Implementation
+
 For non-trivial, architecture-sensitive, or boundary-sensitive tasks, perform a short planning step before implementation.
 
 Before implementing, provide:
@@ -149,12 +151,25 @@ Before implementing, provide:
 4. the planned verification steps
 5. whether tests will be added, updated, or deferred
 6. any risks, boundary changes, missing project context, or unresolved uncertainties
+7. whether the next step is executable from the current repo state
 
 The agent must state this plan explicitly before making code changes.
 
 Do not begin implementation until this planning step is complete.
 
-Escalate to a higher verification level when the task touches areas such as:
+When the next step depends on runnable project state, confirm that the necessary prerequisites exist in the current repo. This may include scaffolded structure, install and run commands derivable from the repo, required dependencies or configuration, or a runnable environment.
+
+If those prerequisites are missing, do not proceed with abstract implementation steps. Instead, explicitly identify the missing prerequisites and sequence them before implementation work.
+
+Before completing a task, explicitly state:
+
+1. what was verified
+2. how it was verified
+3. which verification checks were applied
+
+Do not treat verification as implicit.
+
+Escalate to a higher verification level when the task touches:
 
 - authentication or authorization
 - persistence or external data access
@@ -172,7 +187,7 @@ Respect documented project boundaries.
 
 Do not assume a stack, datastore, auth provider, framework pattern, or integration approach unless it is declared in `docs/project/*`.
 
-When working in a repo cloned from this starter:
+When working in a repo created from this starter:
 
 - use `docs/project/STACK.md` to determine stack assumptions
 - use `docs/project/ARCHITECTURE.md` to determine high-level system structure
@@ -237,14 +252,14 @@ unless the change is about the portable control system itself rather than the cu
 
 # Legacy and Transitional Patterns
 
-Some cloned repos will contain transitional code, legacy patterns, or partially migrated structures.
+Some projects created from this starter may contain transitional code, legacy patterns, or partially migrated structures.
 
 Rules:
 
-- do not assume legacy patterns are preferred just because they already exist
-- do not spread a legacy pattern further unless the task explicitly requires working within it
-- prefer the smallest safe change that preserves progress toward documented boundaries
-- if a transitional pattern exists, document it in project context rather than normalizing it silently
+- do not assume existing patterns are correct simply because they exist
+- do not extend or propagate a legacy pattern unless the task explicitly requires it
+- prefer the smallest safe change that moves the system toward documented boundaries
+- when transitional or legacy patterns are encountered, document them in project context rather than normalizing them silently
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define how repo-specific context is introduced into a repository cloned from this starter, without polluting the portable control system.
+Define how repo-specific context is introduced into a repository created from this starter, without polluting the portable control system.
 
 This model ensures that:
 
@@ -45,11 +45,15 @@ File:
 
 Defines:
 - frameworks and runtime
+- package manager
 - data stores
 - authentication systems
 - external services and integrations
+- scaffold-relevant defaults and deferred decisions
 
 No stack assumptions should exist outside this file.
+
+This file must be specific enough to support not only reasoning about the system, but also initial scaffold and setup decisions when project creation is still in progress.
 
 ---
 
@@ -88,14 +92,15 @@ Examples:
 
 When starting a new repo:
 
-1. Clone the starter repository
+1. created from this starter the starter repository
 2. Remove the `meta/` directory
 3. Initialize `docs/project/*`:
    - define project purpose
    - define stack
    - define architecture
    - define boundaries
-4. Begin implementation only after minimal context exists
+4. Update `README.md` to reflect the actual project
+5. Begin implementation only after minimal context exists
 
 ---
 
@@ -112,6 +117,8 @@ Instead:
 1. Identify which layer the information belongs to
 2. Update the appropriate file under `docs/project/*`
 3. Continue work using that declared context
+
+Repo-specific context must be sufficient not only for reasoning, but also for scaffold and setup decisions when project creation is still in progress.
 
 ---
 
@@ -193,4 +200,5 @@ Do not allow:
 - Control system is portable and stable
 - Repo-specific context is injected through `docs/project/*`
 - All assumptions must be made explicit before implementation
+- Repo-specific context must support both reasoning and setup
 - The system prevents drift by separating process from truth
