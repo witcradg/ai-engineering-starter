@@ -33,7 +33,8 @@ After creating the new repository:
 1. Remove the `meta/` directory
 2. Define the project by filling in `docs/project/*`
 3. Update `README.md` to reflect the new project
-4. Begin work using:
+4. Run `./scripts/setup-hooks.sh`
+5. Begin work using:
    - `AGENTS.md`
    - `AGENT_RULES.md`
    - `docs/starter/*`
@@ -85,3 +86,6 @@ Project docs define **truth**.
 
 - Do not infer architecture from starter documents
 - Add stack-specific `.gitignore` entries after cloning based on your project stack
+- A versioned local publish guard is available via `.githooks/pre-push`
+- Configure it in `starter-config/publish-guard.conf`
+- See `docs/starter/publish-guard.md`

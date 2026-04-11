@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -u
+
+HOOK_NAME="starter publish guard"
+ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+CONFIG_PATH="$ROOT_DIR/starter-config/publish-guard.conf"
+
+mode="warn"
+markers=".github/workflows/pr-verification.yml docs/project/github-actions-plan.md .repo-ready-for-publish"
+
+if [[ -f "$CONFIG_PATH" ]]; then
+  # shellcheck disable=SC1090
+  source "$CONFIG_PATH"
+fi
+
+if [[ "${MODE:-}" == "block" ]]; then
+  mode="block"
+fi
+
+if [[ -n "${MARKERS:-}" ]]; then
+  markers="$MARKERS"
+fi
+
+for marker in $markers; do
+  if [[ -e "$ROOT_DIR/$marker" ]]; then
+    exit 0
+  fi
+done
+
+cat >&2 <<EOF
+$HOOK_NAME: this repo is being pushed before publish-readiness markers exist.
+
+Configured markers:
+  $markers
+
+Create one of the configured markers or switch mode intentionally in starter-config/publish-guard.conf.
+git push --no-verify bypasses local hooks.
+EOF
+
+if [[ "$mode" == "block" ]]; then
+  cat >&2 <<EOF
+
+Push blocked because publish-readiness markers do not exist.
+Create one of the configured markers or add an explicit override marker.
+Current mode is block.
+git push --no-verify bypasses the hook, but is not the intended path.
+EOF
+  exit 1
+fi
+
+cat >&2 <<EOF
+
+Current mode is warn, so push will proceed.
+EOF
+exit 0
