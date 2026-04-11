@@ -129,3 +129,47 @@ If the correct approach is unclear:
 - identify what documentation is missing
 - update the appropriate project document if needed
 - choose the smallest safe step that preserves system clarity
+
+## 9. Enforce documented engineering constraints
+
+- Constraints under `docs/constraints/*` define enforceable engineering rules.
+- These constraints apply to both implementation and code review.
+- Constraints are treated as non-negotiable unless explicitly overridden by project documentation.
+
+When writing or modifying code:
+
+- check for relevant constraints before implementing
+- do not introduce patterns that violate documented constraints
+- prefer refactoring toward compliance rather than preserving violating code
+
+If a constraint appears to conflict with the current codebase:
+
+- do not silently violate the constraint
+- explicitly surface the conflict
+- propose a compliant alternative or request clarification
+
+---
+
+### React Effects Constraint (Required)
+
+The constraint defined in:
+
+- `docs/constraints/frontend/react-effects.md`
+
+must be enforced at all times.
+
+Specifically:
+
+- Do not use `useEffect` for derived state, internal data flow, or event logic
+- Do not introduce state that can be computed during render
+- Do not trigger actions from effects based on state flags
+
+Before introducing any `useEffect`, the agent must verify:
+
+- the effect synchronizes with an external system (API, DOM, subscription, timer, third-party library)
+- the logic cannot be expressed through render, events, or memoization
+
+If these conditions are not met:
+
+- the effect must not be implemented
+- a compliant alternative must be used instead

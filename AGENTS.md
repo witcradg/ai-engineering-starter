@@ -91,7 +91,8 @@ Before making significant changes, consult these files in order:
 1. `README.md`
 2. `AGENT_RULES.md`
 3. relevant files in `docs/starter/`
-4. relevant files in `docs/project/`
+4. relevant files in `docs/project/*`
+5. Before introducing new patterns, check relevant files under `docs/constraints/*` for the area you are modifying.
 
 When the task is architecture-sensitive, boundary-sensitive, or non-trivial, prefer reading the smallest set of governing files rather than scanning the entire repo.
 
@@ -137,8 +138,6 @@ Do not list files that are not materially relevant.
 Prefer the smallest set of governing documents over a long inventory of consulted files.
 
 ---
-
-# Verification Planning Before Implementation
 
 # Verification Planning Before Implementation
 
