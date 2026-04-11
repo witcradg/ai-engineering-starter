@@ -22,7 +22,7 @@ Recommended flow:
 
 1. Click **"Use this template"** on this repository
 2. Create a new repository for your project
-3. created from this starter the new project repository locally
+3. Clone the new project repository locally
 
 ---
 
